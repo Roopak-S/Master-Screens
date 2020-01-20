@@ -1,0 +1,62 @@
+{
+	"country": {
+		"countryID": "Country Code",
+		"countryName": "Country Name",
+		"errorCountryID": "Invalid Country ID",
+		"errorCountryName": "Invalid Country Name",
+		"regionName": "Region Name",
+		"titleModify": "Modify Country",
+		"titleNew": "New Country"
+	},
+	"country-list": {
+		"create": "Create",
+		"search": "Search",
+		"title": "Country Master"
+	},
+	"demo": {
+		"active": "Active",
+		"errorMax": "Must contain less than 3 characters",
+		"errorRequired": "This field is mandatory",
+		"greeting": "",
+		"submit": "Submit",
+		"text": "This is a simple demonstration app for ngx-translate",
+		"title": "Translation demo"
+	},
+	"dialog": {
+		"No": "No",
+		"Yes": "Yes",
+		"closeConfirm": "Are you sure you want to close? Unsaved changes will be lost",
+		"deleteConfirm": "Are you sure to delete this record ?"
+	},
+	"lang": {
+		"apply": "Apply",
+		"confirm": "Are you sure you want to apply the selected settings?",
+		"errorRequired": "Please choose a language",
+		"language": "Language"
+	},
+	"navbar": {
+		"countryTitle": "Country Master",
+		"language": "Language",
+		"master": "Masters",
+		"setting": "Settings",
+		"stateTitle": "State Master"
+	},
+	"notif": {
+		"deleteSuccess": "Deleted Successfully",
+		"submitSuccess": "Submitted Successfully"
+	},
+	"state": {
+		"countryName": "Country Name",
+		"errorStateID": "Invalid State Code",
+		"errorStateName": "Invalid State Name",
+		"stateID": "State Code",
+		"stateName": "State Name",
+		"titleModify": "Modify State",
+		"titleNew": "New State"
+	},
+	"state-list": {
+		"create": "Create",
+		"search": "Search",
+		"title": "State Master"
+	}
+}

@@ -1,4 +1,4 @@
-import { StateComponent } from './../state/state.component';
+import { StateComponent } from '../state/state.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StateService } from '../../shared/state.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
@@ -6,6 +6,7 @@ import { CountryService } from '../../shared/country.service';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { NotificationService } from '../../shared/notification.service';
 import { DialogService } from '../../shared/dialog.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -19,10 +20,13 @@ export class StateListComponent implements OnInit {
     private countryService: CountryService,
     private dialog: MatDialog,
     private notificationService: NotificationService,
-    private dialogService: DialogService) { }
+    private dialogService: DialogService,
+    private translate: TranslateService) {
+      translate.setDefaultLang('en');
+     }
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['stateName', 'countryName','countryID','isActive'];
+  displayedColumns: string[] = ['stateName', 'countryName','stateCode','isActive','Actions'];
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   searchKey: string;
@@ -44,12 +48,12 @@ export class StateListComponent implements OnInit {
         this.listData.paginator = this.paginator;
         this.listData.filterPredicate = (data, filter) => {
           return this.displayedColumns.some(ele => {
-            return ele != 'actions' && data[ele].toString().toLowerCase().indexOf(filter) != -1;
+            return ele != 'Actions' && data[ele].toString().toLowerCase().indexOf(filter) != -1;
           });
         };
       });
   }
-
+ 
   onSearchClear() {
     this.searchKey = "";
     this.applyFilter();
@@ -75,23 +79,22 @@ export class StateListComponent implements OnInit {
     this.dialog.open(StateComponent,dialogConfig);
   }
 
-  onEdit(){
-    let row = this.selectedRow;
+  onEdit(row){
     this.service.populateForm(row);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(StateComponent,dialogConfig);
-  }
+  } 
 
-  onDelete(){
-    let $key = this.selectedRowKey;
-    this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+  onDelete(event,$key){
+    event.stopPropagation();
+    this.dialogService.openConfirmDialog(this.translate.instant('dialog.deleteConfirm'))
     .afterClosed().subscribe(res =>{
       if(res){
         this.service.deleteState($key);
-        this.notificationService.warn('Deleted Successfully');
+        this.notificationService.warn(this.translate.instant('notif.deleteSuccess'));
       }
     });
   }

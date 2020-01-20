@@ -1,0 +1,10 @@
+{
+    "Regions": [
+    {"RegionName": "Africa"},
+    {"RegionName": "Asia & Pacific"},
+    {"RegionName": "Europe"},
+    {"RegionName": "Middle East"},
+    {"RegionName": "North America"},
+    {"RegionName": "South/Latin America"}
+    ]
+}

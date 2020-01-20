@@ -1,0 +1,16 @@
+<form (submit)="useLanguage(langControl.value)">
+    <div class="lang-select">
+        <mat-form-field>
+            <mat-select [formControl]="langControl" placeholder="{{ 'lang.language' | translate }}" required>
+                <mat-option>{{ 'lang.language' | translate }}</mat-option>
+                <mat-option value="en">English - US</mat-option>
+                <mat-option value="de">German - DE</mat-option>
+                <mat-option value="fr">French - FR</mat-option>
+            </mat-select>
+            <mat-error *ngIf="langControl.hasError('required')">{{ 'lang.errorRequired' | translate }}</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="lang-select">
+        <button type="submit" mat-raised-button>{{ 'lang.apply' | translate }}</button>  
+    </div>
+</form>  

@@ -1,0 +1,62 @@
+{
+	"country": {
+		"countryID": "Landesvorwahl",
+		"countryName": "Ländername",
+		"errorCountryID": "Ungültige Länderkennung",
+		"errorCountryName": "Ungültiger Ländername",
+		"regionName": "Name der Region",
+		"titleModify": "Land ändern",
+		"titleNew": "Neues Land"
+	},
+	"country-list": {
+		"create": "Erstellen",
+		"search": "Suche",
+		"title": "Country Master"
+	},
+	"demo": {
+		"active": "Aktiv",
+		"errorMax": "Muss weniger als 3 Zeichen enthalten",
+		"errorRequired": "Das Feld ist obligatorisch",
+		"greeting": "Hallo {{name}}!",
+		"submit": "Einreichen",
+		"text": "﻿Dies ist eine einfache Applikation um die Funktionen von ngx-transalte zu demonstrieren.",
+		"title": "Übersetzungs-Demo"
+	},
+	"dialog": {
+		"No": "Nein",
+		"Yes": "Ja",
+		"closeConfirm": "Sind Sie sicher, dass Sie schließen möchten? Nicht gespeicherte Änderungen gehen verloren",
+		"deleteConfirm": "Möchten Sie diesen Datensatz wirklich löschen?"
+	},
+	"lang": {
+		"apply": "Sich bewerben",
+		"confirm": "Möchten Sie die ausgewählten Einstellungen wirklich übernehmen?",
+		"errorRequired": "Bitte wählen Sie eine Sprache",
+		"language": "Sprache"
+	},
+	"navbar": {
+		"countryTitle": "Country Master",
+		"language": "Sprache",
+		"master": "Meister",
+		"setting": "die Einstellungen",
+		"stateTitle": "Staatsmeister"
+	},
+	"notif": {
+		"deleteSuccess": "Erfolgreich gelöscht",
+		"submitSuccess": "Erfolgreich eingereicht"
+	},
+	"state": {
+		"countryName": "Ländername",
+		"errorStateID": "Ungültiger Landescode",
+		"errorStateName": "Ungültiger Statusname",
+		"stateID": "Landesvorwahl",
+		"stateName": "Name des Bundesstaates",
+		"titleModify": "Status ändern",
+		"titleNew": "Neuer Staat"
+	},
+	"state-list": {
+		"create": "Erstellen",
+		"search": "Suche",
+		"title": "Staatsmeister"
+	}
+}

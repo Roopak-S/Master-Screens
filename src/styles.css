@@ -1,5 +1,92 @@
 div.container{
     margin: 0px 40px;
+    background-color:#00203FFF;
+    margin-top: 10px;
+}
+
+.main-navbar{
+    background-color: #EC3047;
+    color: rgb(255, 255, 255);
+}
+
+
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#toolbarMenu {
+    cursor: pointer;
+    margin-right: 20px;
+}
+#mainToolbar .toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+#mainToolbar .toolbar-icon {
+    cursor: pointer;
+    margin: 0 8px;
+}
+
+#sidenavContainer {
+    margin-top: 64px;
+    
+}
+
+#sidenav {
+    width: 240px;
+    
+}
+
+#sidenav.menu-close {
+    width: 70px
+}
+
+#sidenav.menu-open {
+    width: 240px
+}
+
+#sidenav .avatar {
+    background-image: url('http://i.pravatar.cc/300');
+    background-size: cover;
+}
+
+#sidenav .mat-list-item-content {
+    padding: 0;
+}
+
+#sidenav .menu-item {
+    width: 100%;
+    border-radius: 0;
+    text-align: left;
+    padding: 10px;
+}
+
+#sidenav .menu-item:hover {
+  background: #eee;
+}
+#sidenav .menu-item mat-icon {
+    margin-right: 20px;
+    margin-left: 12px;
+}
+
+
+
+
+.lang-select{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+   
+} 
+
+.menu-btn{
+   
+}
+
+.mat-menu-content{
+    
 }
 
 .fill-remaining-space {
@@ -103,7 +190,7 @@ mat-footer-row mat-footer-cell{
     display: flex;
 }
 .confirm-dialog-container #close-icon{
-    margin-left: auto;
+    margin-left: auto; 
     order: 2;
     font-weight: bolder;
 }

@@ -1,8 +1,80 @@
-<div class="container">
-  <mat-toolbar>
-      <span class="fill-remaining-space"></span>
-      <span>State Master</span>
-      <span class="fill-remaining-space"></span>
-  </mat-toolbar>
-  <app-state-list></app-state-list>
+<mat-toolbar id="mainToolbar" class="main-navbar">
+  <mat-icon
+    (click)="onToolbarMenuToggle()"
+    id="toolbarMenu">subject
+  </mat-icon>
+  Depo Management System
+</mat-toolbar>
+
+
+<mat-sidenav-container
+  id="sidenavContainer"
+ fullscreen>
+  <mat-sidenav
+    mode="side"
+    #sidenav
+    id="sidenav"
+    [class.menu-open]="isMenuOpen"
+    [class.menu-close]="!isMenuOpen"
+    opened>
+    <mat-list id="menus">
+      <mat-list-item>
+        <button 
+        class="menu-item"
+          mat-flat-button>
+          <mat-icon>dashboard</mat-icon>
+        Dashboard</button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <button [matMenuTriggerFor]="masterMenu"
+        class="menu-item"
+          mat-flat-button>
+          <mat-icon>work</mat-icon>
+          {{ 'navbar.master' | translate }}</button>
+          <mat-menu #masterMenu="matMenu">
+            <button class="menu-btn" [routerLink]="'/country'" routerLinkActive="active" mat-menu-item>{{ 'navbar.countryTitle' | translate }}</button>      <button class="menu-btn" [routerLink]="'/state'" routerLinkActive="active" mat-menu-item>{{ 'navbar.stateTitle' | translate }}</button>
+          </mat-menu>
+      </mat-list-item>
+
+      <mat-list-item>
+          <button mat-button [matMenuTriggerFor]="languageMenu"
+          class="menu-item"
+            mat-flat-button>
+            <mat-icon>settings_application</mat-icon>
+          {{ 'navbar.language' | translate }}</button>
+          <mat-menu #languageMenu="matMenu">
+            <button class="menu-btn" (click)="useLanguage('en')" mat-menu-item>English - US</button>
+            <button class="menu-btn" (click)="useLanguage('fr')" mat-menu-item>French - FR</button>
+            <button class="menu-btn" (click)="useLanguage('de')" mat-menu-item>German - DE</button>
+          </mat-menu>
+        </mat-list-item>
+
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content
+  [ngStyle]="{ 'margin-left.px': contentMargin }">
+  <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+ 
+
+
+
+
+
+<!--
+<mat-toolbar class="main-navbar">
+  <button mat-button [matMenuTriggerFor]="masterMenu">{{ 'navbar.master' | translate }}</button> 
+  <mat-menu #masterMenu="matMenu">
+    <button class="menu-btn" [routerLink]="'/country'" routerLinkActive="active" mat-menu-item>{{ 'navbar.countryTitle' | translate }}</button>      <button class="menu-btn" [routerLink]="'/state'" routerLinkActive="active" mat-menu-item>{{ 'navbar.stateTitle' | translate }}</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="settingMenu">{{ 'navbar.setting' | translate }}</button>
+    <mat-menu #settingMenu="matMenu">
+    <a class="menu-btn" [routerLink]="'/language'" routerLinkActive="active" mat-menu-item>{{ 'navbar.language' | translate }}</a>
+  </mat-menu>
+  <span class="fill-remaining-space"></span>
+</mat-toolbar> -->
+<div> 
 </div>

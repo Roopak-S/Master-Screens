@@ -1,72 +1,79 @@
 import { Injectable } from '@angular/core';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as _ from 'lodash';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable} from 'rxjs';
-import {StateComponent} from '../states/state/state.component';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountryService {
-  
-  url :string = "../assets/country.json";
-  array = [];
-  a : number;
+  constructor(private firebase: AngularFireDatabase, private datePipe: DatePipe,private db: AngularFireDatabase) { }
 
-  constructor(private https:HttpClient) {
-    this.allCountries().subscribe(
-      data2 => {
-        this.array=data2.Countries;
-      }
-     )
-    }
-
-  allCountries(): Observable<any>{
-    return this.https.get(this.url);
-    
-  }
-
-
-  getKey(value)
-  {
-    this.a = null;
-    console.log("Get Key Entered and value is:"+value);
-    this.a = _.findIndex(this.array, ['CountryName', value]);
-    console.log("a"+this.a);
-    return this.a;
-  }
-
-  /*
   countryList: AngularFireList<any>;
-  array = [];
- 
-  constructor(private firebase: AngularFireDatabase) {
-    this.countryList = this.firebase.list('Countries');
-    this.countryList.snapshotChanges().subscribe(
-      list => {
-        this.array = list.map(item => {
-          return {
-            $key: item.key,
-            ...item.payload.val()
-          };
-        });
-      });
-   }
-*/
+  activeCountryList: AngularFireList<any>;
+  tempCountryList: AngularFireList<any>;
 
-   getCountryName($key) {
-    if ($key == "0")
-      return "";
-    else{
-      return _.find(this.array, (obj) => { return obj.$key == $key; });
-    }
+
+  tempCountry: any;
+
+  form: FormGroup = new FormGroup({
+    $key: new FormControl(null),
+    countryName: new FormControl('', [Validators.required,Validators.pattern('^[a-zA-Z0-9 _-]{2,24}$')]),
+    regionName: new FormControl('',Validators.required),
+    countryID: new FormControl('',[Validators.required,Validators.max(3),Validators.pattern('^[a-zA-Z0-9 ]{1,3}$')]),
+    isActive: new FormControl(false)
+  });
+
+  initializeFormGroup() {
+    this.form.setValue({
+      $key: null,
+      regionName: '',
+      countryName: '',
+      countryID: '',
+      isActive: false
+    });
+  }
+
+  getCountries() {
+    this.countryList = this.firebase.list('countries');
+    return this.countryList.snapshotChanges();
+  }
+
+  insertCountry(country) {
+    this.countryList.push({
+      regionName: country.regionName,
+      countryName: country.countryName,
+      countryID: country.countryID, 
+      isActive: country.isActive
+    });
+  }
+
+  getActiveCountries(){
+    this.activeCountryList = this.firebase.list('countries', ref => ref.orderByChild('isActive').equalTo(true));
+    return this.activeCountryList.snapshotChanges();
   }
 /*
-  setSelect(id)
-  {
-    this.selectedC = id;
-    console.log(this.selectedC);
-  }
+  checkExist(formValue: string){
+    this.tempCountryList = (this.countryList.query.orderByChild('countryName').equalTo(formValue));
+    }
 */
+  updateCountry(country) {
+    this.countryList.update(country.$key,
+      {
+        regionName: country.regionName, 
+        countryName: country.countryName,
+        countryID: country.countryID,
+        isActive: country.isActive
+      });
+  }
+
+  deleteCountry($key: string) {
+    this.countryList.remove($key);
+  }
+
+  populateForm(country) {
+    this.form.setValue(country);
+  }
+  
 }

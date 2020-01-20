@@ -11,15 +11,15 @@ import {CountryService} from './country.service';
 
 })
 export class StateService {
-  constructor(private firebase: AngularFireDatabase, private datePipe: DatePipe,private countryService:CountryService) { }
+  constructor(private firebase: AngularFireDatabase, private datePipe: DatePipe) { }
 
   stateList: AngularFireList<any>;
 
-  form: FormGroup = new FormGroup({
+  form: FormGroup = new FormGroup({ 
     $key: new FormControl(null),
-    stateName: new FormControl('', Validators.required),
+    stateName: new FormControl('', [Validators.required,Validators.pattern('^[a-zA-Z0-9 _-]{2,24}$')]),
     countryName: new FormControl('',Validators.required),
-    countryID: new FormControl('',Validators.required),
+    stateCode: new FormControl('',[Validators.required,Validators.max(3),Validators.pattern('^[a-zA-Z0-9 ]{1,3}$')]),
     isActive: new FormControl(false)
   });
 
@@ -28,7 +28,7 @@ export class StateService {
       $key: null,
       stateName: '',
       countryName: '',
-      countryID: '',
+      stateCode: '',
       isActive: false
     });
   }
@@ -42,7 +42,7 @@ export class StateService {
     this.stateList.push({
       stateName: state.stateName,
       countryName: state.countryName, 
-      countryID: state.countryID, 
+      stateCode: state.stateCode, 
       isActive: state.isActive
     });
   }
@@ -52,7 +52,7 @@ export class StateService {
       {
         stateName: state.stateName, 
         countryName: state.countryName,
-        countryID: state.countryID,
+        stateCode: state.stateCode,
         isActive: state.isActive
       });
   }
@@ -63,7 +63,5 @@ export class StateService {
 
   populateForm(state) {
     this.form.setValue(state);
-    //this.form.controls.countryName.setValue(this.countryService.getCountryName(this.countryService.getKey(state.countryName)));
-    //this.stateComponent.setSelect();
   }
 }

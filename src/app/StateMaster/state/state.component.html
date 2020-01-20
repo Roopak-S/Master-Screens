@@ -1,0 +1,50 @@
+<mat-toolbar>
+    <span>{{service.form.controls['$key'].value?modifyTitle:newTitle}}</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  </mat-toolbar>
+  <form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="1" rowHeight="300px">
+      <mat-grid-tile>
+        <div class="controles-container">
+          <input type="hidden" formControlName="$key">
+          <mat-form-field>
+            <input formControlName="stateName" matInput placeholder="{{ 'state.stateName' | translate }}">
+            <mat-error *ngIf="errorHandling('stateName', 'required')">{{ 'demo.errorRequired' | translate }}.</mat-error>
+            <mat-error *ngIf="errorHandling('stateName', 'pattern')">{{ 'state.errorStateName' | translate }}</mat-error> 
+          </mat-form-field> 
+          <mat-form-field>
+            <mat-select formControlName="countryName" placeholder="{{ 'state.countryName' | translate }}" >   
+              <mat-option>None</mat-option> 
+              <ng-container *ngFor="let country of activeCountry;">  
+                <mat-option value="{{country.countryName}}">{{country.countryName}}</mat-option>
+              </ng-container>
+              </mat-select>
+              <mat-error *ngIf="errorHandling('countryName', 'required')">{{ 'demo.errorRequired' | translate }}.</mat-error>
+          </mat-form-field>
+          <mat-form-field> 
+              <input matInput formControlName="stateCode"  placeholder="{{ 'state.stateID' | translate }}" >
+              <mat-error *ngIf="errorHandling('stateCode', 'required')">{{ 'demo.errorRequired' | translate }}.</mat-error>
+              <mat-error *ngIf="errorHandling('stateCode', 'max')">{{ 'demo.errorMax' | translate }}</mat-error>
+              <mat-error *ngIf="errorHandling('stateCode', 'pattern')">{{ 'state.errorStateID' | translate }} </mat-error> 
+          </mat-form-field>
+            <!--
+              <mat-form-field>
+            <mat-select formControlName="countryName" placeholder="Country Name">
+              
+              <ng-container *ngFor="let country of countryService.array">
+                <mat-option value="{{country.$key}} ">{{country.CountryId}}-{{country.CountryName}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field> -->
+          <div class="add-bottom-padding">
+            <mat-checkbox formControlName="isActive" [value]="falseValue" (change)="checkboxChange($event.source, $event.checked)">{{ 'demo.active' | translate }}</mat-checkbox>
+          </div>
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">{{ 'demo.submit' | translate }}</button>
+          <!--  <button mat-raised-button color="warn" (click)="onClear()">Clear</button> -->
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>

@@ -1,0 +1,62 @@
+{
+	"country": {
+		"countryID": "Code postal",
+		"countryName": "Nom du pays",
+		"errorCountryID": "ID de pays non valide",
+		"errorCountryName": "Nom de pays non valide",
+		"regionName": "Nom de la région",
+		"titleModify": "Modifier le pays",
+		"titleNew": "Nouveau pays"
+	},
+	"country-list": {
+		"create": "Créer",
+		"search": "Chercher",
+		"title": "Maître de pays"
+	},
+	"demo": {
+		"active": "Actif",
+		"errorMax": "Doit contenir moins de 3 caractères",
+		"errorRequired": "Ce champ est obligatoire",
+		"greeting": "",
+		"submit": "Soumettre",
+		"text": "",
+		"title": ""
+	},
+	"dialog": {
+		"No": "Non",
+		"Yes": "Oui",
+		"closeConfirm": "Voulez-vous vraiment fermer? Les modifications non enregistrées seront perdues",
+		"deleteConfirm": "Voulez-vous vraiment supprimer cet enregistrement?"
+	},
+	"lang": {
+		"apply": "appliquer",
+		"confirm": "Voulez-vous vraiment appliquer les paramètres sélectionnés?",
+		"errorRequired": "Veuillez choisir une langue",
+		"language": "La langue"
+	},
+	"navbar": {
+		"countryTitle": "Maître de pays",
+		"language": "La langue",
+		"master": "Maîtrise",
+		"setting": "Réglages",
+		"stateTitle": "Maître d'État"
+	},
+	"notif": {
+		"deleteSuccess": "Supprimé avec succès",
+		"submitSuccess": "Soumis avec succès"
+	},
+	"state": {
+		"countryName": "Nom du pays",
+		"errorStateID": "Code d'État non valide",
+		"errorStateName": "Nom d'état non valide",
+		"stateID": "Code d'État",
+		"stateName": "Nom d'état",
+		"titleModify": "Modifier l'état",
+		"titleNew": "Nouvel l'état"
+	},
+	"state-list": {
+		"create": "Créer",
+		"search": "Chercher",
+		"title": "Maître d'État"
+	}
+}
